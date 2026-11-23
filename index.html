@@ -111,7 +111,6 @@
         }
         .file-label input { display: none; }
 
-        /* HİZALAMA DÜZELTİLDİ: form-grid yapısı her iki alanda da aynı */
         .form-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -142,7 +141,7 @@
             color: #fff; 
             font-size: 15px; 
             box-sizing: border-box; 
-            height: 48px; /* Sabit yükseklik hizalamayı garanti eder */
+            height: 48px;
         }
 
         .input-box input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 4px var(--accent-glow); }
@@ -249,7 +248,6 @@
 
         function saveToHistory(endeks) {
             const now = new Date();
-            // Tarih formatı tekrar yıl bilgisi içerecek şekilde sabitlendi
             const dateStr = now.toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit', year: '2-digit' });
             const timeStr = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
             const fullStamp = `${dateStr} - ${timeStr}`;
@@ -272,7 +270,7 @@
                         <div style="color:var(--accent); font-weight:800; font-size:16px;">${item.val} kWh</div>
                     </div>
                     <div style="display:flex; gap:8px;">
-                        <button class="action-btn copy" onclick="copyToSon('${item.val}')" title="Son Endekse Gönder">
+                        <button class="action-btn copy" onclick="copyToIlk('${item.val}')" title="İlk Endekse Gönder">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
                         </button>
                         <button class="action-btn delete" onclick="removeHistory(${item.id})" title="Sil">
@@ -284,8 +282,8 @@
             });
         }
 
-        window.copyToSon = (val) => {
-            document.getElementById('araSonEndeks').value = val;
+        window.copyToIlk = (val) => {
+            document.getElementById('araIlkEndeks').value = val;
             document.getElementById('historyModal').classList.add('hidden');
         };
 
@@ -339,4 +337,3 @@
     </script>
 </body>
 </html>
-
